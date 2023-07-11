@@ -1,0 +1,62 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+
+    {
+      "name": "Bootstrap",
+      "type": "python",
+      "request": "launch",
+      "program": "C:\\Users\\tdeverdiere\\workspace\\pgsync\\bin\\bootstrap",
+      "args": [
+        "--config",
+        "${workspaceFolder}\\examples\\schema.json",
+      ],
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "env": {
+        "PG_USER": "vms",
+        "PG_PASSWORD": "vms",
+        "PG_HOST": "localhost",
+        "PG_PORT": "5432",
+        "LOG_LEVEL": "DEBUG",
+        "ELASTICSEARCH_PORT": "9200",
+        "ELASTICSEARCH_SCHEME": "http",
+        "ELASTICSEARCH_HOST": "localhost",
+        "REDIS_HOST": "localhost",
+        "REDIS_PORT": "6379",
+        "CONSOLE_LOGGING_HANDLER_MIN_LEVEL": "INFO",
+        "PYTHONPATH": "${workspaceFolder}",
+      }
+    },
+    {
+      "name": "Pgsync",
+      "type": "python",
+      "request": "launch",
+      "program": "bin\\pgsync",
+      "args": [
+        "--daemon",
+        "--verbose",
+      ],
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "env": {
+        "PG_USER": "vms",
+        "PG_PASSWORD": "vms",
+        "PG_HOST": "localhost",
+        "PG_PORT": "5432",
+        "LOG_LEVEL": "DEBUG",
+        "ELASTICSEARCH_PORT": "9200",
+        "ELASTICSEARCH_SCHEME": "http",
+        "ELASTICSEARCH_HOST": "localhost",
+        "REDIS_HOST": "localhost",
+        "REDIS_PORT": "6379",
+        "CONSOLE_LOGGING_HANDLER_MIN_LEVEL": "INFO",
+        "SCHEMA": "${workspaceFolder}\\examples\\schema.json",
+        "PYTHONPATH": "${workspaceFolder}",
+      }
+    }
+  ]
+}
