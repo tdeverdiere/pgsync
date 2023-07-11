@@ -1,0 +1,29 @@
+FROM nexus.iobeya.fr/python:3.11.3-alpine3.17
+LABEL maintainer="iObeya <devops@iobeya.com>"
+
+ENV PGSYNC_VERSION=2.5.0
+
+ARG WORKDIR=/code
+RUN mkdir $WORKDIR
+WORKDIR $WORKDIR
+
+COPY setup.py .
+COPY setup.cfg .
+COPY README.rst .
+ADD bin bin
+ADD scripts scripts
+ADD pgsync pgsync
+ADD requirements requirements
+
+RUN pip install --no-cache-dir .
+
+COPY ./docker/wait-for-it-refactored.sh wait-for-it.sh
+COPY ./docker/runserver-refactored.sh runserver.sh
+
+RUN ls -l
+RUN apk add --no-cache bash=5.2.15-r0 && \
+    chmod +x wait-for-it.sh && \
+    chmod +x runserver.sh
+
+
+ENTRYPOINT ["./runserver.sh"]
